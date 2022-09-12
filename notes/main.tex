@@ -113,7 +113,7 @@ En Git, de manera local, hay 3 estados:\textit{ Working directory}, \textit{stag
 
 Para iniciarse no tiene mucho sentido 
 
-\img{gitstate.png}{Estados de los archivos dentro de Git}{1}
+\img{images/gitstate.png}{Estados de los archivos dentro de Git}{1}
 
 \newpage 
 
@@ -321,7 +321,7 @@ Los comandos básicos son:
     
     El manejo de versiones alternativas es un punto fuerte en el control de versiones de un proyecto. En Git se denominan \textbf{ramas} o \textbf{branchs}. Por default, si se inicia un repositorio con el comando \code{git init}, se crea la rama \textit{master}, y si se inicia un repositorio desde GitHub para despues clonarlo en nuestra PC, se crea la rama \textit{main}. Las versiones alternativas sirven para ramificar el trabajo, y esto nos permite corregir errores, o mismo desarrollar nuevas features sin intervenir en la rama principal que es donde se alojará la versión estable de nuestro proyecto. Al crear una nueva branch o rama, se copian los archivos de la rama desde la cual se generó, pero la gran ventaja es que las modificaciones que hagamos sobre la nueva rama son independientes al resto de ramas. Mismo cuando se desarrollan distintas versiones de un software, se mantiene en la rama principal la versión estable del software, mientras que en las ramas alternativas se van desarrollando los cambios para la próxima versión, para luego fusionar la versión estable con los cambios a implementar.
     
-    \img{branch.png}{Ejemplo de un diagrama de ramas o branchs}{.5}
+    \img{images/branch.png}{Ejemplo de un diagrama de ramas o branchs}{.5}
     
     Para construir versiones alternativas a un proyecto se utiliza el comando:
     
@@ -361,7 +361,7 @@ Los comandos básicos son:
     
     En la consola de bash se puede ver en la rama que estamos, asi como el path actual y el usuario.
     
-    \img{checkout.png}{Ejemplo del uso de \code{git checkout}}{.8}
+    \img{images/checkout.png}{Ejemplo del uso de \code{git checkout}}{.8}
     
     \section{Repositorio remoto}
     
@@ -444,6 +444,6 @@ La primera vez que se inicia un proyecto, se debe clonar la rama \textit{develop
 Una vez terminado un fix o update, si se desea subir un commit al repositorio remoto, primero se debe pullear la rama \textit{develop} a \textit{develop\_local} para actualizar nuestro \textit{develop\_local} ante cambios que pudo haber hecho otra persona luego de mi ultimo commit (\code{git pull origin develop}~ estando dentro de la rama \textit{develop\_local}). Una vez actualizado \textit{develop\_local}, se debe fusionar la actualización con la rama \textit{test\_local}, que es donde estuvimos desarrollando nuestro código, para ello utilizamos el comando \code{git merge test_local} ~ estando en la rama \textit{develop\_local}. Una vez fusionado, estando en la rama \textit{develop\_local}, subimos nuestros cambios a \textit{develop} con el comando \code{git push origin develop}. 
 
 
-\img{git_flowchart.jpg}{Flujo de trabajo utilizando varias branchs de manera local}{0.25}
+\img{images/git_flowchart.jpg}{Flujo de trabajo utilizando varias branchs de manera local}{0.25}
 
 \end{document}

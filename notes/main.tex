@@ -1,0 +1,449 @@
+\documentclass[11pt, twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tcolorbox}
+\usepackage{vmargin}
+\usepackage{subfigure}
+\usepackage{hyperref}
+
+\newcommand{\img}[3]{\begin{figure}[h] \centering
+    \includegraphics[scale=#3]{#1}
+    \caption{#2}
+    \end{figure}}
+
+
+\setmargins{1.8cm}       % margen izquierdo
+{2cm}                 % margen superior
+{17.3cm}                      % anchura del texto
+{24cm}                    % altura del texto
+{5pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{1.3cm}                           % espacio entre el texto y el pie de págin-----------------
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+% aqui definimos el encabezado de las paginas pares e impares.
+
+\lhead[\small{Notas de Git \& Github}]{\small{Notas de Git \& Github}}
+\chead[]{}
+\rhead[\small{N.PASSANO}]{\small{N.PASSANO}}
+\renewcommand{\headrulewidth}{0.5pt}
+
+% aqui definimos el pie de pagina de las paginas pares e impares.
+\lfoot[\small{PÁG. \thepage}]{}
+\cfoot[]{}
+\rfoot[]{\small{PÁG. \thepage}}
+\renewcommand{\footrulewidth}{0.5pt}
+
+
+
+\normalsize
+
+\title{Notas de Git \& Github}
+\author{Nahuel Passano}
+\date{Enero 2022}
+
+\newcommand{\code}[1]{\color{Blue}\texttt{\detokenize{#1}}\color{Black}}
+
+\begin{document}
+
+\begin{titlepage}
+\author{}
+\date{}
+
+\centering
+
+~
+\vspace{2cm}
+~
+
+
+\vspace{1cm}
+
+
+\vspace{4cm}
+\color{Blue}
+{\Huge \bfseries Notas de Git \& Github\par}
+\color{Black}
+~
+
+{\bfseries\LARGE Nahuel Passano  \par}
+{ \texttt{nahue.passano@gmail.com}}
+
+~
+\vspace{4cm}
+~
+
+\vfill
+
+
+{\large Enero del 2022\par}
+\end{titlepage}
+\section{¿Que es Git?}
+
+\textbf{Git} es un \textbf{sistema de control de versiones local}, se utiliza en proyectos con cambios constantes en los scripts y en el desarrollo colaborativo. 
+
+Un \textbf{sistema de control de versiones} \textbf{registra los cambios del código.} En base a una versión inicial del código, y se guardan únicamente los cambios del código, \textbf{no se genera un nuevo archivo actualizado}. Esto permite localizar los cambios en el código (que líneas se modificaron), quien hizo los cambios y la posibilidad de volver a un estado anterior del código actual, entre otras funcionalidades.
+
+\section{¿Que es GitHub?}
+
+\textbf{GitHub} es un sitio web que \textbf{almacena repositorios de git en un servidor remoto}. Esto facilita el trabajo colaborativo, donde \textbf{varios desarrolladores trabajan sobre el mismo repositorio remoto pero cada uno edita en sus versiones locales}. Además, amplía aún más su funcionalidad con respecto a Git ya que permite hostear páginas web estáticas, previsualizar archivos .ipynb (notebooks de Python), entre otros. Existen mas servidores web que almacenan archivos de Git y permiten desarrollar de manera colaborativa como GitHub como GitLab y Bitbucket, entre otros.
+
+\section{¿Como se usa Git?}
+Hay distintas formas de utilizarlo, tanto con GUI (GitHub Desktop, GitKraken) o por comandos de consola. En este caso, haremos hincapié en el uso mediante la \textbf{consola de bash}. Bash es la consola que viene por default en sistemas operativos como Linux y MacOS, pero no en Windows (PowerShell), y es importante previo a utilizar Git, conocer alguno de sus comandos básicos.
+
+\begin{itemize}
+    \item \code{pwd}: Devuelve el directorio actual.
+    \item \code{cd <path>}: Cambiar al directorio que se le indique.
+    \item \code{ls}: Devuelve todos los archivos contenidos en el directorio actual.
+\end{itemize}
+
+
+
+\section{¿Como se manejan los cambios dentro de Git?}
+
+En Git, de manera local, hay 3 estados:\textit{ Working directory}, \textit{staging area} y \textit{repository}. El \textit{working directory}, que es donde se trabaja con todos los archivos, el \textit{staging area} es donde se agregan todos los archivos para guardarlos, y donde finalmente se guardan los cambios es en el \textit{repository}.
+
+Para iniciarse no tiene mucho sentido 
+
+\img{gitstate.png}{Estados de los archivos dentro de Git}{1}
+
+\newpage 
+
+\section{Comandos básicos}
+
+Los comandos básicos son:
+
+\begin{itemize}
+    \item \code{git init}: Se utiliza para indicar a Git que se creará un proyecto nuevo, o para trackear los archivos de un proyecto ya en curso.
+    
+    \item \code{git status}: Se utiliza para saber en que estado estan los archivos, si estan en el \textit{working directory}, \textit{staging area} o \textit{repository}.
+    
+    \item \code{git add <file>}: Se utiliza para pasar los archivos del \textit{working directory} al \textit{staging area}
+    
+    \item \code{git commit -m "<msg>"}: Se utiliza para pasar los archivos del \textit{staging area} al \textit{repository}. Se crea un primer checkpoint de la primera versión del código.
+    
+    \item \code{git push origin branch_name}: Se utiliza para subir el código a la rama \textit{branch\_name} de un repositorio remoto.
+    
+    \item \code{git pull origin branch_name}: Se utiliza cuando se trabaja en desarrollo colaborativo. Trae los cambios que han hecho los otros desarrolladores de la rama \textit{branch\_name}
+    
+    \item \code{git clone <url>}: Clona un repositorio remoto a la pc de manera local.
+    
+    \end{itemize}
+    
+    \section{Instalar Git}
+    
+    Se descarga de \url{https://git-scm.com/}
+    
+    \section{Primer ejemplo}
+    
+    Una vez instalado, una de las herramientas que tendremos disponibles es \textbf{Git Bash}, es la terminal de Git donde ejecutaremos nuestros comandos básicos. En primer lugar, creamos una carpeta con algún archivo adentro (en mi caso es un archivo \code{.py}). Para inicializar la consola de Git en la carpeta, se aprieta click derecho sobre la carpeta y se selecciona \textit{"Git Bash Here"}.
+    
+    Para inicializar el Git dentro de mi proyecto nuevo, ejecuto el comando \code{git init}. Luego, para ver en que estado están nuestros archivos dentro del proyecto, ejecutamos \code{git status}. Lo que aparecerá en la consola de Git es:
+    
+    ~
+    
+    \begin{tcolorbox}
+    
+    
+    
+    \code{git status}
+    
+\code{On branch master}
+
+~
+
+\code{No commits yet}
+
+~
+
+\code{Untracked files: (use "git add <file>..." to include in what will be committed)} 
+
+        ~~~~ \code{ejemplo.py}
+
+~
+
+\code{nothing added to commit but untracked files present (use "git add" to track)}
+    
+    \end{tcolorbox}
+    ~
+    
+    Justamente, no hemos agregado nuestros archivos al entorno de trabajo (al \textit{staging area}). Por lo tanto, para añadir el archivo al entorno de trabajo ejecutamos:
+    
+    ~
+    \begin{tcolorbox}
+    \code{git add ejemplo.py}
+    \end{tcolorbox}
+    
+    
+    
+    ~
+    
+    Ahora, si ejecutamos \code{git status} ~saldrá:
+    
+    ~
+    
+    \begin{tcolorbox}
+    
+    
+    
+    \code{git status}
+    
+\code{On branch master}
+
+~
+
+\code{No commits yet}
+
+~
+
+\code{Changes to be committed:} 
+
+        ~~~~ \code{new file: ejemplo.py}
+    ~
+    
+    ~
+    
+    \end{tcolorbox}
+    
+    \dotfill
+    
+    \textbf{Tip}: Para añadir todos los archivos que hay en mi directorio actual, se hace con:
+    
+    \begin{itemize}
+        \item[]  \begin{tcolorbox}
+        \code{git add .}
+        \end{tcolorbox}
+    \end{itemize}
+    
+    No siempre es recomendable utilizar esta funcionalidad ya que a veces no todos los archivos que están por commitear pertenecen al mismo checkpoint (es una sugerencia para organizar bien los commits).
+    
+    \dotfill
+    
+    ~
+    ~
+    
+    Ya se añadió mi archivo al espacio de trabajo pero aún no se guardó en un repositorio. Para crear nuestro primer punto de control, debemos utilizar el comando \code{git commit}, pero antes, debemos decirle a Git quien está realizando los cambios en los archivos, para ello se utilizan los comandos:
+    
+\begin{tcolorbox}
+        \code{git config --global user.email "<email>"}
+        \end{tcolorbox}
+\begin{tcolorbox}
+        \code{git config --global user.name "<name>"}
+        \end{tcolorbox}
+
+    
+    En este caso:
+    
+    \begin{tcolorbox}
+    \code{git config --global user.email "nahue.passano@gmail.com"}
+    
+    \end{tcolorbox}
+    
+    \begin{tcolorbox}
+    \code{git config --global user.name "Nahuel Passano"}
+    \end{tcolorbox}
+    
+    ~
+    
+    Ahora si podemos hacer nuestro primer checkpoint con \code{git commit}. Si se ejecuta únicamente:
+    
+    \begin{tcolorbox}
+    \code{git commit}
+    \end{tcolorbox}
+    
+    Nos abrirá una nueva consola, donde para tipear en la primera fila debemos hacerlo con \textit{Insert}. Esta primera fila es para añadir un comentario sobre que se está subiendo y/o actualizando. Para finalizar el commit, apretamos escape (\textit{Esc}) y luego tipeamos \code{:wq} ~ (\code{w} ~ de \textit{Write} y \code{q}~ de \textit{Quit}). Presionando \textit{Enter} ya se actualiza nuestro proyecto. Por eso es mas sencillo utilizar 
+    
+    \begin{tcolorbox}
+    \code{git commit -m "<msg>"}
+    \end{tcolorbox}
+    
+    ya que incorporamos el mensaje asociado al commit en la misma línea. 
+    
+    Con respecto al mensaje dentro del commit, es recomendable tener algunas keywords al inicio del commit para saber de que se trata. Por ejemplo yo utilizo:
+    
+    \begin{tcolorbox}
+    \code{git commit -m "[feat]: ..."} \newline
+    \code{git commit -m "[fix]: ..."}   \newline
+    \code{git commit -m "[docs]: ..."}
+    \end{tcolorbox}
+    
+    Donde \textit{feat} la utilizo para hacer commits de upgrades, o features nuevas que se añaden al código. \textit{fix} la utilizo para commitear alguna solución a un bug o simplemente a algun error de tipeo dentro de los scripts. Y finalmente \textit{docs} la utilizo para commitear cambios en las documentaciones, tanto en el README.md como en los docstrings de las funciones desarrolladas.
+    
+    
+    ~
+    
+    \section{Otros comandos importantes}
+    
+    Para poder ver los puntos de control creados es con el comando:
+    
+    \begin{tcolorbox}
+        \code{git log}
+    \end{tcolorbox}
+    
+    Cuando se modifica un archivo que está dentro del repositorio, podemos volver a la ultima versión que fue guardada en Git con el comando 
+    
+    \begin{tcolorbox}
+        \code{git checkout -- <file>}
+    \end{tcolorbox}
+        
+    
+    De hecho, si tipeamos \code{git status}, veremos en consola los archivos modificados a partir de el último checkpoint del archivo.
+    
+    A su vez, para analizar las diferencias que hay entre las versiones de un archivo se debe insertar el comando:
+    
+    \begin{tcolorbox}
+        \code{git diff}
+    \end{tcolorbox}
+        
+    
+    En rojo aparecerán las partes que faltan y en verde las partes que se agregaron. Para actualizar el archivo en el repositorio, debemos añadirlo nuevamente con el comando \code{git add}, y crear el punto de control con \code{git commit}.
+    
+    ~ 
+    
+    Para ignorar archivos o carpetas dentro de mi repositorio, debo crear el archivo
+    
+    \begin{tcolorbox}
+         \code{.gitignore}
+    \end{tcolorbox}
+         
+    
+    En dicho archivo, se escriben los nombres de los archivos o carpetas que se desean ignorar, uno por linea. Para finalmente ignorarlos, añadimos nuestro archivo \code{.gitignore} ~ al repositorio. Para ignorar un tipo de archivo se debe poner \code{*.class}. Por ejemplo si quiero ignorar todos los archivos .jpg tendría que agregar una línea en el \code{.gitignore} ~ con \code{*.jpg}. 
+    
+    \section{Versiones alternativas}
+    
+    El manejo de versiones alternativas es un punto fuerte en el control de versiones de un proyecto. En Git se denominan \textbf{ramas} o \textbf{branchs}. Por default, si se inicia un repositorio con el comando \code{git init}, se crea la rama \textit{master}, y si se inicia un repositorio desde GitHub para despues clonarlo en nuestra PC, se crea la rama \textit{main}. Las versiones alternativas sirven para ramificar el trabajo, y esto nos permite corregir errores, o mismo desarrollar nuevas features sin intervenir en la rama principal que es donde se alojará la versión estable de nuestro proyecto. Al crear una nueva branch o rama, se copian los archivos de la rama desde la cual se generó, pero la gran ventaja es que las modificaciones que hagamos sobre la nueva rama son independientes al resto de ramas. Mismo cuando se desarrollan distintas versiones de un software, se mantiene en la rama principal la versión estable del software, mientras que en las ramas alternativas se van desarrollando los cambios para la próxima versión, para luego fusionar la versión estable con los cambios a implementar.
+    
+    \img{branch.png}{Ejemplo de un diagrama de ramas o branchs}{.5}
+    
+    Para construir versiones alternativas a un proyecto se utiliza el comando:
+    
+    \begin{tcolorbox}
+        \code{git branch <branch_name>}
+    \end{tcolorbox}
+    
+    Donde \code{<branch_name>} será el nombre con el cual identificaremos la nueva rama. Para ver todas las branchs dentro de un proyecto se hace con 
+    
+    \begin{tcolorbox}
+        \code{git branch}
+    \end{tcolorbox}
+    
+    Y para cambiar en que versión estaremos trabajando con Git, se hace con:
+    
+    \begin{tcolorbox}
+        \code{git checkout <branch_name>}
+    \end{tcolorbox}
+    
+    Cuando finalmente corregimos algún bug o desarrollamos alguna feature nueva y queremos integrarla a la versión principal, se deben 'fusionar' ambas versiones con el comando:
+    
+    \begin{tcolorbox}
+    \code{git merge <branch_name>}
+    \end{tcolorbox}
+    
+    Si por ejemplo tengo las branchs \textit{main} y \textit{new\_feature}, y quiero integrar \textit{new\_feature} a \textit{main}, debo cambiarme a la rama \textit{main} con 
+    
+    \begin{tcolorbox}
+        \code{git checkout main}
+    \end{tcolorbox}
+    
+    y luego fusionar dicha rama con \textit{new\_feature} a través de:
+    
+    \begin{tcolorbox}
+    \code{git merge new_feature}
+    \end{tcolorbox}
+    
+    En la consola de bash se puede ver en la rama que estamos, asi como el path actual y el usuario.
+    
+    \img{checkout.png}{Ejemplo del uso de \code{git checkout}}{.8}
+    
+    \section{Repositorio remoto}
+    
+    Para trabajar y subir nuestro proyecto a un repositorio remoto, primero debemos crear una cuenta en GitHub
+    (\url{https://github.com/}) y crear nuestro primer repositorio. Al crear el repositorio remoto, el mismo tiene una dirección la cual será del tipo \{https://github.com/user-name/repository-name.git\}. 
+    
+    \begin{itemize}
+        \item En el caso de generar el repositorio de manera local con \code{git init}, al mismo debemos asociarle un repositorio remoto, el cual será donde subamos nuestros cambios e interactuemos con los otros colaboradores del proyecto. Para asociar nuestro repositorio local con dicho remoto se hace con:
+    
+    \begin{tcolorbox}
+        \code{git remote add origin https://github.com/user-name/repository-name.git}
+    \end{tcolorbox}
+        
+        \item En el caso de crear el repositorio de manera remota en GitHub para luego clonarlo en nuestra computadora, la asociación del repositorio local clonado con el repositorio remoto ya se realiza con la clonación:
+        
+        \begin{tcolorbox}
+            \code{git clone https://github.com/user-name/repository-name}
+        \end{tcolorbox}
+    
+    \end{itemize}
+    
+    
+    
+    
+    Y para subir nuestros ckeckpoints y cambios al repositorio remoto se hace con:
+    
+    \begin{tcolorbox}
+        \code{git push origin branch_name}
+    \end{tcolorbox}
+    
+    donde \textit{branch\_name} será la rama del remoto a la cual queremos subir nuestros cambios.
+    
+\section{Desarrollo colaborativo}
+\subsection{Primeros pasos}
+\begin{enumerate}
+    \item Crear un repositorio remoto en GitHub
+    \item Clonar el repositorio en nuestra computadora con:
+    \begin{tcolorbox}
+            \code{git clone https://github.com/user-name/repository-name}
+        \end{tcolorbox}
+    \item Añadir todos los scripts/archivos/etc a utilizar y desarrollar de manera común y corriente.
+    \item Pasar los archivos con los que se estuvo trabajando al Staging Area con:
+    \begin{tcolorbox}
+            \code{git add <file>}
+        \end{tcolorbox}
+        
+    \item Crear un checkpoint de los cambios hechos (o tambien conocido como commitear) pasando los archivos del Staging Area al Local Repository con:
+    \begin{tcolorbox}
+            \code{git commit -m "<msg>"}
+        \end{tcolorbox}
+    
+    
+    \item Subir mis checkpoints al repositorio remoto 
+    \begin{itemize}
+        \item \textbf{Si son los primeros cambios que se van a subir al repositorio:} Simplemente pusheamos los checkpoints con:
+    \begin{tcolorbox}
+        \code{git push origin branch_name}
+    \end{tcolorbox}
+    \item \textbf{Si mi versión local está desactualizada con la versión remota:} Esto sucede cuando otro colaborador desarrolló y subió sus cambios al remoto, por lo tanto nuestra versión local estará desactualizada y nos dirá que hay conflicto entre los checkpoints si deseamos pushear. Para ello, antes de pushear (subir los checkpoints) debemos pullear la versión mas reciente desde el remoto con el comando:
+    \begin{tcolorbox}
+        \code{git pull origin branch_name}
+    \end{tcolorbox}
+    Ahora tendremos nuestra versión local actualizada con los checkpoints del remoto, por lo tanto esta versión tendrá los checkpoints desarrollados por el otro colaborador junto con mis checkpoints. Ahora sí puedo pushear y quedará todo unificado con:
+    \begin{tcolorbox}
+        \code{git push origin branch_name}
+    \end{tcolorbox}
+    
+    
+    \end{itemize}
+    
+
+    
+\end{enumerate}
+\subsection{Ejemplo: Flujo de trabajo en Infiniem Labs}
+
+En general, para los proyectos en GitHub hay dos branchs, \textit{main} y \textit{develop}. La rama \textit{main} tiene código que pasó por el proceso de revisión, y se encuentra en funcionamiento, mientras que en la rama \textit{develop} se van subiendo los commits del desarrollo. 
+
+La primera vez que se inicia un proyecto, se debe clonar la rama \textit{develop} con el comando \code{git clone <url>} a la rama \textit{develop\_local}. Luego, de manera local, se genera la rama \textit{test\_local}, la cual será donde hagamos pruebas del código y desarrollemos de forma local. 
+
+Una vez terminado un fix o update, si se desea subir un commit al repositorio remoto, primero se debe pullear la rama \textit{develop} a \textit{develop\_local} para actualizar nuestro \textit{develop\_local} ante cambios que pudo haber hecho otra persona luego de mi ultimo commit (\code{git pull origin develop}~ estando dentro de la rama \textit{develop\_local}). Una vez actualizado \textit{develop\_local}, se debe fusionar la actualización con la rama \textit{test\_local}, que es donde estuvimos desarrollando nuestro código, para ello utilizamos el comando \code{git merge test_local} ~ estando en la rama \textit{develop\_local}. Una vez fusionado, estando en la rama \textit{develop\_local}, subimos nuestros cambios a \textit{develop} con el comando \code{git push origin develop}. 
+
+
+\img{git_flowchart.jpg}{Flujo de trabajo utilizando varias branchs de manera local}{0.25}
+
+\end{document}

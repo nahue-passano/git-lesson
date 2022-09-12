@@ -12,3 +12,5 @@ plt.plot(t,signal**2)
 plt.plot(signal+1)
 
 plt.show()
+
+print('test')

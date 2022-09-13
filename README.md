@@ -1,3 +1,4 @@
-# git-lesson
+# Clase sobre Git y GitHub
 
-aca en el readme tambien
+En esta clase se abordan los conceptos básicos y fundamentales de Git para comenzar a utilizar esta herramienta en nuestros proyectos.
+
